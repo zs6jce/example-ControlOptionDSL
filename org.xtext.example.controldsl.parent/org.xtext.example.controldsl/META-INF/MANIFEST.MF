@@ -8,5 +8,23 @@ Bundle-SymbolicName: org.xtext.example.controldsl; singleton:=true
 Bundle-ActivationPolicy: lazy
 Require-Bundle: org.eclipse.xtext,
  org.eclipse.xtext.xbase,
- org.eclipse.equinox.common;bundle-version="3.5.0"
+ org.eclipse.equinox.common;bundle-version="3.5.0",
+ org.eclipse.emf.ecore,
+ org.eclipse.xtext.xbase.lib;bundle-version="2.14.0",
+ org.eclipse.xtext.util,
+ org.eclipse.emf.common,
+ org.eclipse.xtend.lib;bundle-version="2.14.0",
+ org.antlr.runtime;bundle-version="[3.2.0,3.2.1)"
 Bundle-RequiredExecutionEnvironment: JavaSE-10
+Export-Package: org.xtext.example.expressiondsl,
+ org.xtext.example.expressiondsl.controlDSL,
+ org.xtext.example.expressiondsl.serializer,
+ org.xtext.example.expressiondsl.parser.antlr.internal,
+ org.xtext.example.expressiondsl.validation,
+ org.xtext.example.expressiondsl.generator,
+ org.xtext.example.expressiondsl.controlDSL.impl,
+ org.xtext.example.expressiondsl.controlDSL.util,
+ org.xtext.example.expressiondsl.scoping,
+ org.xtext.example.expressiondsl.parser.antlr,
+ org.xtext.example.expressiondsl.services
+Import-Package: org.apache.log4j

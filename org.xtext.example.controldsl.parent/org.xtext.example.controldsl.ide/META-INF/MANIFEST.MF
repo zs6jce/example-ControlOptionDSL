@@ -8,5 +8,9 @@ Bundle-SymbolicName: org.xtext.example.controldsl.ide; singleton:=true
 Bundle-ActivationPolicy: lazy
 Require-Bundle: org.xtext.example.controldsl,
  org.eclipse.xtext.ide,
- org.eclipse.xtext.xbase.ide
+ org.eclipse.xtext.xbase.ide,
+ org.antlr.runtime;bundle-version="[3.2.0,3.2.1)"
 Bundle-RequiredExecutionEnvironment: JavaSE-10
+Export-Package: org.xtext.example.expressiondsl.ide.contentassist.antlr.internal,
+ org.xtext.example.expressiondsl.ide.contentassist.antlr
+

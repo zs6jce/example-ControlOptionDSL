@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="controlDSL" nsURI="http://www.xtext.org/example/expressiondsl/ControlDSL"
+    nsPrefix="controlDSL">
+  <eClassifiers xsi:type="ecore:EClass" name="Model">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="statements" upperBound="-1"
+        eType="#//Statement" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Statement"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Control" eSuperTypes="#//Statement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="keywords" upperBound="-1"
+        eType="#//ControlOption" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ControlOption"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ControlOptionALLOC" eSuperTypes="#//ControlOption">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="option" eType="#//AllocOptions"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="AllocOptions">
+    <eLiterals name="STGMDL" literal="*STGMDL"/>
+    <eLiterals name="TERRASPACE" value="1" literal="*TERASPACE"/>
+    <eLiterals name="SNGLVL" value="2" literal="*SNGLVL"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ControlOptionACTGRP" eSuperTypes="#//ControlOption">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="option" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ControlOptionALTSEQ" eSuperTypes="#//ControlOption">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="option" eType="#//AltSeqOptions"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="AltSeqOptions">
+    <eLiterals name="NONE" literal="*NONE"/>
+    <eLiterals name="SRC" value="1" literal="*SRC"/>
+    <eLiterals name="EXT" value="2" literal="*EXT"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ControlOptionALWNULL" eSuperTypes="#//ControlOption">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="option" eType="#//AlwNullOptions"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="AlwNullOptions">
+    <eLiterals name="NO" literal="*NO"/>
+    <eLiterals name="INPUTONLY" value="1" literal="*INPUTONLY"/>
+    <eLiterals name="USRCTL" value="2" literal="*USRCTL"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ControlOptionAUT" eSuperTypes="#//ControlOption">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="option" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ControlOptionBNDDIR" eSuperTypes="#//ControlOption">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="options" unique="false"
+        upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ControlOptionCCSID" eSuperTypes="#//ControlOption">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="option" eType="ecore:EClass http://www.eclipse.org/emf/2002/Ecore#//EObject"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ControlOptionCCSIDExact">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="parm1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ControlOptionCCSIDChar">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="parm1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="parm2" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ControlOptionCCSIDGraph">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="parm1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="parm2" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ControlOptionCCSIDUcs2">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="parm1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="parm2" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ControlOptionCCSIDCVT" eSuperTypes="#//ControlOption">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="option" eType="#//CCSIDCVTOptions"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="CCSIDCVTOptions">
+    <eLiterals name="EXCP" literal="*EXCP"/>
+    <eLiterals name="LIST" value="1" literal="*LIST"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ControlOptionCOPYNEST" eSuperTypes="#//ControlOption">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="option" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ControlOptionCOPYRIGHT" eSuperTypes="#//ControlOption">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="option" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ControlOptionCURSYM" eSuperTypes="#//ControlOption">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="option" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ControlOptionCVTOPT" eSuperTypes="#//ControlOption">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="options" unique="false"
+        upperBound="-1" eType="#//CvtOptOptions"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="CvtOptOptions">
+    <eLiterals name="DATETIME" literal="*DATETIME"/>
+    <eLiterals name="NODATETIME" value="1" literal="*NODATETIME"/>
+    <eLiterals name="GRAPHIC" value="2" literal="*GRAPHIC"/>
+    <eLiterals name="NOGRAPHIC" value="3" literal="*NOGRAPHIC"/>
+    <eLiterals name="VARCHAR" value="4" literal="*VARCHAR"/>
+    <eLiterals name="NOVARCHAR" value="5" literal="*NOVARCHAR"/>
+    <eLiterals name="VARGRAPHIC" value="6" literal="*VARGRAPHIC"/>
+    <eLiterals name="NOVARGRAPHIC" value="7" literal="*NOVARGRAPHIC"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ControlOptionDCLOPT" eSuperTypes="#//ControlOption">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="option" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ControlOptionDATEDIT" eSuperTypes="#//ControlOption">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="fmt" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="sep" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ControlOptionDATEFMT" eSuperTypes="#//ControlOption">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="fmt" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="sep" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ControlOptionDEBUG" eSuperTypes="#//ControlOption">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="option" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ControlOptionDECEDIT" eSuperTypes="#//ControlOption">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="option" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ControlOptionDECPREC" eSuperTypes="#//ControlOption">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="option" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ControlOptionDFTACTGRP" eSuperTypes="#//ControlOption">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="option" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ControlOptionDFTNAME" eSuperTypes="#//ControlOption">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="option" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ControlOptionENBPFRCOL" eSuperTypes="#//ControlOption">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="option" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ControlOptionEXPROPTS" eSuperTypes="#//ControlOption">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="option" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ControlOptionEXTBININT" eSuperTypes="#//ControlOption">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="option" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ControlOptionFIXNBR" eSuperTypes="#//ControlOption">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="option" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ControlOptionFLTDIV" eSuperTypes="#//ControlOption">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="option" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ControlOptionFORMSALIGN" eSuperTypes="#//ControlOption">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="option" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ControlOptionFTRANS" eSuperTypes="#//ControlOption">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="option" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ControlOptionGENLVL" eSuperTypes="#//ControlOption">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="option" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ControlOptionINDENT" eSuperTypes="#//ControlOption">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="option" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ControlOptionINTPREC" eSuperTypes="#//ControlOption">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="option" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ControlOptionLANGID" eSuperTypes="#//ControlOption">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="option" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ControlOptionMAIN" eSuperTypes="#//ControlOption">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="option" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ControlOptionNOMAIN" eSuperTypes="#//ControlOption">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="option" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ControlOptionOPENOPT" eSuperTypes="#//ControlOption">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="option" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ControlOptionOPTIMIZE" eSuperTypes="#//ControlOption">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="option" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ControlOptionOPTION" eSuperTypes="#//ControlOption">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="options" unique="false"
+        upperBound="-1" eType="#//OptionOptions"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="OptionOptions">
+    <eLiterals name="XREF" literal="*XREF"/>
+    <eLiterals name="NOXREF" value="1" literal="*NOXREF"/>
+    <eLiterals name="SECLVL" value="2" literal="*SECLVL"/>
+    <eLiterals name="NOSECLVL" value="3" literal="*NOSECLVL"/>
+    <eLiterals name="SHOWCPY" value="4" literal="*SHOWCPY"/>
+    <eLiterals name="NOSHOWCPY" value="5" literal="*NOSHOWCPY"/>
+    <eLiterals name="EXPDDS" value="6" literal="*EXPDDS"/>
+    <eLiterals name="NOEXPDDS" value="7" literal="*NOEXPDDS"/>
+    <eLiterals name="EXP" value="8" literal="*EXT"/>
+    <eLiterals name="NOEXP" value="9" literal="*NOEXT"/>
+    <eLiterals name="SHOWSKP" value="10" literal="*SHOWSKP"/>
+    <eLiterals name="NOSHOWSKP" value="11" literal="*NOSHOWSKP"/>
+    <eLiterals name="SRCSTMT" value="12" literal="*SRCSTMT"/>
+    <eLiterals name="NOSRCSTMT" value="13" literal="*NOSRCSTMT"/>
+    <eLiterals name="DEBUGIO" value="14" literal="*DEBUG"/>
+    <eLiterals name="NODEBUGIO" value="15" literal="*NODEBUG"/>
+    <eLiterals name="UNREF" value="16" literal="*UNREF"/>
+    <eLiterals name="NOUNREF" value="17" literal="*NOUNREF"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ControlOptionPGMINFO" eSuperTypes="#//ControlOption">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="option" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="module" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ControlOptionPRFDTA" eSuperTypes="#//ControlOption">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="option" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ControlOptionSRTSEQ" eSuperTypes="#//ControlOption">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="option" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ControlOptionSTGMDL" eSuperTypes="#//ControlOption">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="option" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ControlOptionTEXT" eSuperTypes="#//ControlOption">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="option" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ControlOptionTHREAD" eSuperTypes="#//ControlOption">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="option" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ControlOptionTIMFMT" eSuperTypes="#//ControlOption">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="fmt" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="sep" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ControlOptionTRUNCNBR" eSuperTypes="#//ControlOption">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="option" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ControlOptionUSRPRF" eSuperTypes="#//ControlOption">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="option" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ControlOptionVALIDATE" eSuperTypes="#//ControlOption">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="option" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+</ecore:EPackage>
