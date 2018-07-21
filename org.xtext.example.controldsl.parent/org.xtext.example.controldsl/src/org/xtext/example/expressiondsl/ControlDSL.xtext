@@ -66,92 +66,62 @@ ControlOption:
 // ALLOC - Start ---------------------------------------------------
 
 ControlOptionALLOC:
-	// Method 1:
-	'ALLOC' '(' option=('*STGMDL'|'*TERASPACE'|'*SNGLVL') ')'
-	
-//	// Method 2:
-//	'ALLOC' '(' option=AllocOptions ')'
-//;
-//
-//enum AllocOptions:
-//	STGMDL='*STGMDL'		|
-//	TERRASPACE='*TERASPACE'	|
-//	SNGLVL='*SNGLVL'
+	'ALLOC' '(' option=AllocOptions ')'
+;
+enum AllocOptions:
+	STGMDL='*STGMDL'		|
+	TERRASPACE='*TERASPACE'	|
+	SNGLVL='*SNGLVL'
 ;
 // ALLOC - End -----------------------------------------------------
 
 // ACTGRP - Start ---------------------------------------------------
-
 ControlOptionACTGRP:
-	// Method 1:
-	'ACTGRP' '(' option=('*STGMDL' | '*NEW' | '*CALLER' | STRING) ')'
-	
-//	// Method 2:
-//	'ACTGRP' '(' option=(ActGrpOptions | STRING) ')'
-//;
-//enum ActGrpOptions:
-//	STGMDL='*STGMDL' |
-//	NEW='*NEW'		 |
-//	CALLER='*CALLER'
+	'ACTGRP' '(' option=(ActGrpOptions) ')'
+;
+ActGrpOptions:
+	'*STGMDL' | '*NEW' | '*CALLER' | STRING
 ;
 // ACTGRP - End -----------------------------------------------------
 
 // ALTSEQ - Start ---------------------------------------------------
 ControlOptionALTSEQ: {ControlOptionALTSEQ}
-	// Method 1:
 	'ALTSEQ' (
-		 '(' option=('*NONE' | '*SRC' | '*EXT' ) ')'
+		 '(' option=AltSeqOptions ')'
 	)?
-	
-//	// Method 2:
-//	'ALTSEQ' (
-//		 '(' option=AltSeqOptions ')'
-//	)?
-//;
-//enum AltSeqOptions:
-//	NONE='*NONE' |
-//	SRC='*SRC'	 |
-//	EXT='*EXT'
+;
+enum AltSeqOptions:
+	NONE='*NONE' |
+	SRC='*SRC'	 |
+	EXT='*EXT'
 ;
 // ALTSEQ - End -----------------------------------------------------
 
 // ALWNULL - Start ---------------------------------------------------
 ControlOptionALWNULL: {ControlOptionALWNULL}
-	// Method 1:
-	'ALWNULL' '(' option=('*NO' | '*INPUTONLY' | '*USRCTL' ) ')'
-	
-//	// Method 2:
-//	'ALWNULL' (
-//		 '(' option=AlwNullOptions ')'
-//	)?
-//;
-//enum AlwNullOptions:
-//	NO='*NO'				|
-//	INPUTONLY='*INPUTONLY'	|
-//	USRCTL='*USRCTL'
+	'ALWNULL' (
+		 '(' option=AlwNullOptions ')'
+	)?
+;
+enum AlwNullOptions:
+	NO='*NO'				|
+	INPUTONLY='*INPUTONLY'	|
+	USRCTL='*USRCTL'
 ;
 // ALWNULL - End -----------------------------------------------------
 
 // AUT - Start -------------------------------------------------------
 ControlOptionAUT:
-	// Method 1:
-	'AUT' '(' option=('*LIBRCRTAUT' | '*ALL' | '*CHANGE' | '*USE' | '*EXCLUDE' | STRING) ')'
-	
-//	// Method 2:
-//	'AUT' '(' option=(AutOptions|STRING) ')'
-//;
-//enum AutOptions:
-// LIBCRTAUT='*LIBRCRTAUT'	|
-// ALL='*ALL'				|
-// CHANGE='*CHANGE'			|
-// USE='*USE'				|
-// EXCLUDE='*EXCLUDE'
+	'AUT' '(' option=(AutOptions) ')'
+;
+AutOptions:
+	'*LIBRCRTAUT' | '*ALL' | '*CHANGE' | '*USE' | '*EXCLUDE' | STRING
 ;
 // AUT - End --------------------------------------------------------
 
 // BNDDIR - Start ---------------------------------------------------
 ControlOptionBNDDIR:
-	'BNDDIR' '(' bnddirs+=STRING (':' bnddirs+=STRING)* ')'
+	'BNDDIR' '(' options+=STRING (':' options+=STRING)* ')'
 ;
 // BNDDIR - End -----------------------------------------------------
 
@@ -165,44 +135,39 @@ ControlOptionCCSID:
 		)
 	)')'
 ;
-
 ControlOptionCCSIDExact:
 	parm1='*EXACT'
 ;
 ControlOptionCCSIDChar:
-//	// Method 1	:
-//	parm1='*CHAR' ':' parm2=('*JOBRUN' | '*JOBRUNMIX' | '*UTF8' | '*HEX' | INT)
-	
-	// Method 2 :
-	parm1='*CHAR' ':' parm2=(ControlOptionCCSIDCharOptions | INT)
+	parm1='*CHAR' ':' parm2=CCSIDCharOptions
 ;
-ControlOptionCCSIDCharOptions:
-	JOBRUN='*JOBRUN'		|
-	JOBRUNMIX='*JOBRUNMIX'	|
-	UTF8='*UTF8'			|
-	HEX='*HEX' 	
+CCSIDCharOptions:
+	'*JOBRUN' | '*JOBRUNMIX' | '*UTF8' | '*HEX' | INT
 ;
 ControlOptionCCSIDGraph:
-	// Method 1 : 
-	parm1='*GRAPH' ':' parm2=('*JOBRUN' | '*SRC' | '*HEX' | '*IGNORE' | INT)
-
-//	// Method 2 :
-//	parm1='*GRAPH' ':' parm2=(ControlOptionCCSIDGraphOptions | INT)
-//;
-//ControlOptionCCSIDGraphOptions:
-//	JOBRUN='*JOBRUN' |
-//	SRC='*SRC'		 |
-//	HEX='*HEX'		 |
-//	IGNORE='*IGNORE'
+	parm1='*GRAPH' ':' parm2=CCSIDGraphOptions
+;
+CCSIDGraphOptions:
+	'*JOBRUN' | '*SRC' | '*HEX' | '*IGNORE' | INT
 ;
 ControlOptionCCSIDUcs2:
-	parm1='*UCS2' ':' parm2=('*UTF16' | INT)
+	parm1='*UCS2' ':' parm2=CCSIDUcs2Options
+;
+CCSIDUcs2Options:
+	'*UTF16' | INT
 ;
 // CCSID - End ------------------------------------------------------
 
+// CCSIDCVT - End ---------------------------------------------------
 ControlOptionCCSIDCVT:
-	'CCSIDCVT' '(' option=('*EXCP' | '*LIST') ')'
+	'CCSIDCVT' '(' option=(CCSIDCVTOptions) ')'
 ;
+enum CCSIDCVTOptions:
+	EXCP='*EXCP' |
+	LIST='*LIST'
+;
+// CCSIDCVT - End ---------------------------------------------------
+
 ControlOptionCOPYNEST:
 	'COPYNEST' '(' option=INT ')'
 ;
@@ -215,13 +180,6 @@ ControlOptionCURSYM:
 
 // CVTOPT - Start ---------------------------------------------------
 ControlOptionCVTOPT:
-//	// Method 1:
-//	'CVTOPT' '('
-//				 options+=('*DATETIME'|'*NODATETIME'|'*GRAPHIC' |'*NOGRAPHIC'|'*VARCHAR' |'*NOVARCHAR'|'*VARGRAPHIC'|'*NOVARGRAPHIC')
-//		    (':' options+=('*DATETIME'|'*NODATETIME'|'*GRAPHIC' |'*NOGRAPHIC'|'*VARCHAR' |'*NOVARCHAR'|'*VARGRAPHIC'|'*NOVARGRAPHIC')*
-//	')'
-
-	// Method 2:
 	'CVTOPT' '(' options+=CvtOptOptions (':' options+=CvtOptOptions)* ')'
 ;
 enum CvtOptOptions:
